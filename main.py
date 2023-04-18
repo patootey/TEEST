@@ -20,3 +20,6 @@ class Graph:
         plot.plot(x, y, color=str(color))
         plot.grid()
         plot.show()
+
+
+print("hello")
