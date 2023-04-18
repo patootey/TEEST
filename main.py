@@ -3,8 +3,9 @@ import matplotlib.pyplot as plot
 
 class Test:
     def __init__(self):
-        self.masse = 0
-        self.areal = 0
+        self.mass = 0
+        self.area = 0
+        self.height = 0
 
 
 class Graph:
