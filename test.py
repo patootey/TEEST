@@ -21,7 +21,6 @@ for i in test.times:
     test.a = test.gravity - test.coeff * test.v**2 * test.times_step
     test.v = test.v + test.a * test.times_step
 
-
 plt.plot(test.times, test.no_drag_velocities, label="Without Drag")
 plt.plot(test.times, test.drag_velocities, label="With Drag")
 plt.xlabel("Time [s]")
