@@ -1,0 +1,7 @@
+# plt.plot(test.times, test.no_drag_velocities, label="Without Drag")
+# plt.plot(test.times, test.drag_velocities, label="With Drag")
+# plt.xlabel("Time [s]")
+# plt.ylabel("Speed [m/s]")
+# plt.legend(loc="upper left")
+# plt.grid()
+# plt.show()
