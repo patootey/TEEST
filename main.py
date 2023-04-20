@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plot
 
 
-class Test:
+class Main:
     def __init__(self):
         self.mass = 0
         self.area = 0
@@ -12,6 +12,7 @@ class Test:
         self.drag_coefficient = 0
         self.gravity = 0
         self.acceleration = 0
+        self.delta = 0.0001
 
 
 class Graph:
