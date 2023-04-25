@@ -20,16 +20,19 @@ def taksel(g, m, q, y):
 def epformel(a, x, x1, y1):
     return a * (x - x1) + y1
 
-
+tid = []
+hoyde = []
+fart = []
+akselerasjon = []
 def main():
     g = 9.81
     Aird = 1.225
 
-    m = float(input("Masse = "))
-    A = float(input("Areal = "))
-    cd = float(input("luftmotstandkoeffisient = "))
+    m = float(5)
+    A = float(10)
+    cd = float(0.34)
 
-    h = float(input("Hoyde (>0) = "))
+    h = float(20)
 
     v = 0
     t = 0
@@ -37,10 +40,7 @@ def main():
     q = (1 / 2) * Aird * cd * A
     d = 0.1
 
-    tid = []
-    hoyde = []
-    fart = []
-    akselerasjon = []
+
 
     while h > 0:
         tid.append(t)
@@ -76,5 +76,7 @@ def main():
     print("Terminalhastighet =", round(Vt(m, g, Aird, cd, A), 3))
 
 
+
 if __name__ == "__main__":
     main()
+    print(fart)

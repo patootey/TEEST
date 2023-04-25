@@ -1,19 +1,25 @@
 import matplotlib.pyplot as plot
 
 
-class Main:
+class Test:
     def __init__(self):
-        self.mass = 0
-        self.area = 0
-        self.shape = 0
-        self.height = 0
+        self.MASS = 0
+        self.AREA = 0
+        self.SHAPE = 0
+        self.HEIGHT = 0
+        self.DRAG_COEFFICIENT = self.SHAPE
+        self.GRAVITY = 0
+        self.DENSITY = 0
         self.velocity = 0
         self.drag = 0
-        self.drag_coefficient = 0
-        self.gravity = 0
         self.acceleration = 0
-        self.delta = 0.0001
 
+    def dragondznutz(self):
+        return self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+
+    def differential_equation(self, x):
+        # v-v0 / t-t0 = g - kv^2
+        pass
 
 class Graph:
     def draw(self, x, y, title, color):
@@ -21,6 +27,3 @@ class Graph:
         plot.plot(x, y, color=str(color))
         plot.grid()
         plot.show()
-
-
-print("hello")
