@@ -1,44 +1,80 @@
-# Euler method python program
-
-# function to be solved
-def f(x, y):
-    return x + y
+import matplotlib.pyplot as py
 
 
-# or
-# f = lambda x: x+y
-
-# Euler method
-def euler(x0, y0, xn, n):
-
-    # Calculating step size
-    h = (xn - x0) / n
-
-    print("\n-----------SOLUTION-----------")
-    print("------------------------------")
-    print("x0\ty0\tslope\tyn")
-    print("------------------------------")
-    for i in range(n):
-        slope = f(x0, y0)
-        yn = y0 + h * slope
-        print("%.4f\t%.4f\t%0.4f\t%.4f" % (x0, y0, slope, yn))
-        print("------------------------------")
-        y0 = yn
-        x0 = x0 + h
-
-    print("\nAt x=%.4f, y=%.4f" % (xn, yn))
+def Vt(m, g, Aird, cd, A):
+    return ((2 * m * g) / (Aird * cd * A)) ** (1 / 2)
 
 
-# Inputs
-print("Enter initial conditions:")
-x0 = float(input("x0 = "))
-y0 = float(input("y0 = "))
+def Lmkraft(m, A, cd, tetthet, v):
+    return m * A * cd * tetthet * (v**2) / 2
 
-print("Enter calculation point: ")
-xn = float(input("xn = "))
 
-print("Enter number of steps:")
-step = int(input("Number of steps = "))
+def Tfart(m, g, tetthet, cd, A):
+    return ((2 * m * g) / (tetthet * cd * A)) ** 0.5
 
-# Euler method call
-euler(x0, y0, xn, step)
+
+def taksel(g, m, q, y):
+    return round((g - (q / m) * (y**2)), 10)
+
+
+def epformel(a, x, x1, y1):
+    return a * (x - x1) + y1
+
+
+def main():
+    g = 9.81
+    Aird = 1.225
+
+    m = float(input("Masse = "))
+    A = float(input("Areal = "))
+    cd = float(input("luftmotstandkoeffisient = "))
+
+    h = float(input("Hoyde (>0) = "))
+
+    v = 0
+    t = 0
+    a = 0
+    q = (1 / 2) * Aird * cd * A
+    d = 0.1
+
+    tid = []
+    hoyde = []
+    fart = []
+    akselerasjon = []
+
+    while h > 0:
+        tid.append(t)
+        hoyde.append(h)
+        fart.append(v)
+
+        a = taksel(g, m, q, v)
+        v = epformel(a, t + d, t, v)
+        t = t + d
+        h = h - (v * d)
+
+        akselerasjon.append(a)
+
+    py.plot(tid, fart)
+    py.xlabel("Tid")
+    py.ylabel("Fart i m/s")
+    py.grid()
+    py.show()
+
+    py.plot(tid, hoyde)
+    py.xlabel("Tid")
+    py.ylabel("HÃ¸yde i m")
+    py.grid()
+    py.show()
+
+    py.plot(tid, akselerasjon)
+    py.xlabel("Tid")
+    py.ylabel("Akselerasjon")
+    py.grid()
+    py.show()
+
+    print("Hastighet nadd =", round(fart[len(fart) - 1], 3))
+    print("Terminalhastighet =", round(Vt(m, g, Aird, cd, A), 3))
+
+
+if __name__ == "__main__":
+    main()
