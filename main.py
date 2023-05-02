@@ -1,29 +1,53 @@
 import matplotlib.pyplot as plot
 
+def draw(x, y, title, color):
+    plot.title(str(title))
+    plot.plot(x, y, color)
+    plot.grid()
+    plot.show()
+
 
 class Test:
     def __init__(self):
-        self.MASS = 0
-        self.AREA = 0
-        self.SHAPE = 0
-        self.HEIGHT = 0
+        self.MASS = 2
+        self.AREA = 10
+        self.SHAPE = 0.3
+        self.height = 20
         self.DRAG_COEFFICIENT = self.SHAPE
-        self.GRAVITY = 0
-        self.DENSITY = 0
+        self.GRAVITY = 9.81
+        self.DENSITY = 1.1
         self.velocity = 0
         self.drag = 0
         self.acceleration = 0
 
     def dragondznutz(self):
-        return self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+        self.drag = self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+        return self.drag
+    def accel(self):
+        self.acceleration = (self.GRAVITY - self.dragondznutz())/self.MASS
+    def vello(self, time, delta):
+        self.velocity = self.acceleration * ((time + delta)-time) + self.velocity
+    def heighg(self, delta):
+        self.height = self.height - (self.velocity*delta)
+def main():
+    Object = Test()
+    array_time, array_height, array_velocity, array_acceleration = [], [], [], []
+    delta = 0.1
+    time = 0
+    while Object.height > 0:
+        array_time.append(time)
+        array_height.append(Object.height)
+        array_velocity.append(Object.velocity)
 
-    def differential_equation(self, x):
-        # v-v0 / t-t0 = g - kv^2
-        pass
+        Object.vello(time, delta)
+        Object.accel()
+        time += delta
+        Object.heighg(delta)
 
-class Graph:
-    def draw(self, x, y, title, color):
-        plot.title(str(title))
-        plot.plot(x, y, color=str(color))
-        plot.grid()
-        plot.show()
+        array_acceleration.append(Object.acceleration)
+    print(array_velocity)
+    draw(array_time, array_velocity, "fart", (255,0,0))
+
+
+if __name__ == "__main__":
+    main()
