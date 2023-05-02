@@ -10,10 +10,10 @@ def draw(x, y, title, color):
 
 class Test:
     def __init__(self):
-        self.MASS = 2
-        self.AREA = 10
+        self.MASS = 30
+        self.AREA = 100
         self.SHAPE = 0.3
-        self.height = 20
+        self.height = 50
         self.DRAG_COEFFICIENT = self.SHAPE
         self.GRAVITY = 9.81
         self.DENSITY = 1.1
@@ -25,13 +25,13 @@ class Test:
         self.drag = self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
         return self.drag
     def accel(self):
-        self.acceleration = (self.GRAVITY - self.dragondznutz())/self.MASS
+        self.acceleration = (self.GRAVITY*self.MASS - self.dragondznutz())/self.MASS
     def vello(self, time, delta):
         self.velocity = self.acceleration * ((time + delta)-time) + self.velocity
     def heighg(self, delta):
         self.height = self.height - (self.velocity*delta)
     def terminalvelocity(self):
-        return math.sqrt(2*self.Mass*self.GRAVITY,self.DENSITY*self.AREA*self.DRAG_COEFFICIENT)
+        return (math.sqrt(2*self.MASS*self.GRAVITY)/(self.DENSITY*self.AREA*self.DRAG_COEFFICIENT))
 def main():
     Object = Test()
     array_time, array_height, array_velocity, array_acceleration = [], [], [], []
