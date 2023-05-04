@@ -2,11 +2,11 @@ import matplotlib.pyplot as plot
 import math
 
 
-def draw(x, y, title, color):
-    plot.title(str(title))
-    plot.plot(x, y, color)
-    plot.grid()
-    plot.show()
+# def draw(x, y, title, color):
+#     plot.title(str(title))
+#     plot.plot(x, y, color)
+#     plot.grid()
+#     plot.show()
 
 
 class Test:
@@ -61,7 +61,8 @@ def main():
         array_acceleration.append(Object.acceleration)
     print(array_velocity)
     print(Object.terminalvelocity())
-    draw(array_time, array_velocity, "fart", (255, 0, 0))
+    plot.plot(array_time, array_velocity)
+    plot.show()
 
 
 if __name__ == "__main__":
