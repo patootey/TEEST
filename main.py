@@ -31,7 +31,7 @@ class Test:
     def heighg(self, delta):
         self.height = self.height - (self.velocity*delta)
     def terminalvelocity(self):
-        return (math.sqrt(2*self.MASS*self.GRAVITY)/(self.DENSITY*self.AREA*self.DRAG_COEFFICIENT))
+        return math.sqrt((2*self.MASS*self.GRAVITY)/(self.DENSITY*self.AREA*self.DRAG_COEFFICIENT))
 def main():
     Object = Test()
     array_time, array_height, array_velocity, array_acceleration = [], [], [], []
