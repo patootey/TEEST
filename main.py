@@ -2,13 +2,6 @@ import matplotlib.pyplot as plot
 import math
 
 
-# def draw(x, y, title, color):
-#     plot.title(str(title))
-#     plot.plot(x, y, color)
-#     plot.grid()
-#     plot.show()
-
-
 class Test:
     def __init__(self):
         self.MASS = 30
