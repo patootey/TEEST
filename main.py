@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plot
 import math
 
-def draw(x, y, title, color):
-    plot.title(str(title))
-    plot.plot(x, y, color)
-    plot.grid()
-    plot.show()
+
+# def draw(x, y, title, color):
+#     plot.title(str(title))
+#     plot.plot(x, y, color)
+#     plot.grid()
+#     plot.show()
 
 
 class Test:
@@ -22,16 +23,30 @@ class Test:
         self.acceleration = 0
 
     def dragondznutz(self):
-        self.drag = self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+        self.drag = (
+            self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+        )
         return self.drag
+
     def accel(self):
-        self.acceleration = (self.GRAVITY*self.MASS - self.dragondznutz())/self.MASS
+        self.acceleration = (self.GRAVITY * self.MASS - self.dragondznutz()) / self.MASS
+
     def vello(self, time, delta):
-        self.velocity = self.acceleration * ((time + delta)-time) + self.velocity
+        self.velocity = self.acceleration * ((time + delta) - time) + self.velocity
+
     def heighg(self, delta):
-        self.height = self.height - (self.velocity*delta)
+        self.height = self.height - (self.velocity * delta)
+
     def terminalvelocity(self):
+<<<<<<< HEAD
         return math.sqrt((2*self.MASS*self.GRAVITY)/(self.DENSITY*self.AREA*self.DRAG_COEFFICIENT))
+=======
+        return math.sqrt(2 * self.MASS * self.GRAVITY) / (
+            self.DENSITY * self.AREA * self.DRAG_COEFFICIENT
+        )
+
+
+>>>>>>> 1b9129abf8e29db30b1b0035e4425148fd4778b6
 def main():
     Object = Test()
     array_time, array_height, array_velocity, array_acceleration = [], [], [], []
@@ -50,7 +65,8 @@ def main():
         array_acceleration.append(Object.acceleration)
     print(array_velocity)
     print(Object.terminalvelocity())
-    draw(array_time, array_velocity, "fart", (255,0,0))
+    plot.plot(array_time, array_velocity)
+    plot.show()
 
 
 if __name__ == "__main__":
