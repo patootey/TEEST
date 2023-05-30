@@ -4,20 +4,20 @@ import math
 
 class Test:
     def __init__(self):
-        self.MASS = 30
-        self.AREA = 100
-        self.SHAPE = 0.3
-        self.height = 50
+        self.MASS = 0.076
+        self.AREA = 0.3472
+        self.SHAPE = 1.75
+        self.height = 12
         self.DRAG_COEFFICIENT = self.SHAPE
         self.GRAVITY = 9.81
-        self.DENSITY = 1.1
+        self.DENSITY = 1.293
         self.velocity = 0
         self.drag = 0
         self.acceleration = 0
 
     def dragondznutz(self):
         self.drag = (
-            self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity**2
+            self.DRAG_COEFFICIENT * self.AREA * 0.5 * self.DENSITY * self.velocity
         )
         return self.drag
 
@@ -52,10 +52,8 @@ def main():
         Object.heighg(delta)
 
         array_acceleration.append(Object.acceleration)
-    print(array_velocity)
-    print(Object.terminalvelocity())
-    print(array_time)
-    plot.plot(array_time, array_velocity)
+    print(array_acceleration)
+    plot.plot(array_time, array_acceleration)
     plot.show()
 
 
