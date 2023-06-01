@@ -6,7 +6,7 @@ class Test:
     def __init__(self):
         self.MASS = 0.076
         self.AREA = 0.3472
-        self.SHAPE = 0.85 # 1.75 for en fallskjerm ifølge internett, 0.85 hva den sånn ca er hvis alle de andre variablene er riktig
+        self.SHAPE = 0.85  # 1.75 for en fallskjerm ifølge internett, 0.85 hva den sånn ca er hvis alle de andre variablene er riktig
         self.height = 12
         self.DRAG_COEFFICIENT = self.SHAPE
         self.GRAVITY = 9.81
@@ -27,7 +27,7 @@ class Test:
         self.acceleration = (self.GRAVITY * self.MASS - self.dragondznutz()) / self.MASS
 
     # calculates velocity
-    def vello(self,delta):
+    def vello(self, delta):
         self.velocity += self.acceleration * delta
 
     #
