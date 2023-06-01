@@ -28,7 +28,7 @@ class FrittFall:
         self.velocity += self.acceleration * delta
 
     def calculate_height(self, delta):
-        self.height = self.height - (self.velocity * delta)
+        self.height += - (self.velocity * delta)
 
     def calculate_terminalvelocity(self):
         return math.sqrt(2 * self.MASS * self.GRAVITY) / (
