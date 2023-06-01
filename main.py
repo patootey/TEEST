@@ -6,7 +6,7 @@ class Test:
     def __init__(self):
         self.MASS = 0.076
         self.AREA = 0.3472
-        self.SHAPE = 1.75
+        self.SHAPE = 0.85 # 1.75 for en fallskjerm ifølge internett, 0.85 hva den sånn ca er hvis alle de andre variablene er riktig
         self.height = 12
         self.DRAG_COEFFICIENT = self.SHAPE
         self.GRAVITY = 9.81
@@ -27,8 +27,8 @@ class Test:
         self.acceleration = (self.GRAVITY * self.MASS - self.dragondznutz()) / self.MASS
 
     # calculates velocity
-    def vello(self, time, delta):
-        self.velocity = self.acceleration * ((time + delta) - time) + self.velocity
+    def vello(self,delta):
+        self.velocity += self.acceleration * delta
 
     #
     def heighg(self, delta):
@@ -52,14 +52,14 @@ def main():
         array_height.append(Object.height)
         array_velocity.append(Object.velocity)
 
-        Object.vello(time, delta)
+        Object.vello(delta)
         Object.accel()
         time += delta
         Object.heighg(delta)
 
         array_acceleration.append(Object.acceleration)
-    print(array_acceleration)
-    plot.plot(array_time, array_acceleration)
+    print(array_velocity)
+    plot.plot(array_time, array_velocity)
     plot.show()
 
 

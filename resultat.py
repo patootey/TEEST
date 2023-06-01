@@ -6,6 +6,8 @@ data = []
 tid = 0
 tid_array = []
 al_array = []
+velocity = 0
+velocity_array = []
 
 with open("data.txt", newline="", encoding="utf-8") as txtfile:
     reader = pd.read_csv(txtfile, sep=",", header=None)
@@ -15,9 +17,13 @@ with open("data.txt", newline="", encoding="utf-8") as txtfile:
         acceleration = (float(acceleration_str) / 1000 * 9.81 -10)*-1
         al_array.append(acceleration)
 
-for _ in data:
+for i in al_array:
     tid += 0.1
     tid_array.append(tid)
+    velocity += i*0.1
+    velocity_array.append(velocity)
 
-plt.plot(tid_array, al_array)
+print(velocity_array)
+plt.plot(tid_array, velocity_array)
 plt.show()
+
